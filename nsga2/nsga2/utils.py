@@ -53,7 +53,7 @@ class NSGA2Utils(object):
             for individual in front:
                 individual.crowding_distance = 0
             
-            for m in range(len(front[0].objectives)):
+            for m in xrange(len(front[0].objectives)):
                 front = sorted(front, cmp=functools.partial(self.__sort_objective, m=m))
                 front[0].crowding_distance = self.problem.max_objectives[m]
                 front[solutions_num-1].crowding_distance = self.problem.max_objectives[m]
@@ -69,7 +69,7 @@ class NSGA2Utils(object):
     
     def create_initial_population(self):
         population = Population()
-        for _ in range(self.num_of_individuals):
+        for _ in xrange(self.num_of_individuals):
             individual = self.problem.generateIndividual()
             '''have been calculate when generate the individual, to see if i was wrong'''
             #self.problem.calculate_objectives(individual)
@@ -81,9 +81,14 @@ class NSGA2Utils(object):
         children = []
         while len(children) < len(population):
             parent1 = self.__tournament(population)
+            parent2 = self.__tournament(population)
+            '''
             parent2 = parent1
             while (parent1.features == parent2.features).all():
                 parent2 = self.__tournament(population)
+                circle += 1
+                if circle > 50:
+            '''        
             print("-------finished tournament ------  "+ time.strftime("%H:%M:%S"))
             child1, child2 = self.__crossover(parent1, parent2)
             print("-------finished crossover ------  "+ time.strftime("%H:%M:%S"))
@@ -128,10 +133,14 @@ class NSGA2Utils(object):
                     (self.problem.bound[0,gene] - child.features[gene])*(1-random.random()**(1-ith_generation/self.max_generation)))
         
     def __tournament(self, population):
+        '''
+        randomly slelct two individuals from current population, compare their rank and then select the fronter rank, 
+        and if they have the same rank, select the one that have bigger distance
+        '''
         participants = random.sample(population, self.num_of_tour_particips)
         best = None
         for participant in participants:
             if best is None or self.crowding_operator(participant, best) == 1:
                 best = participant
-
+        
         return best

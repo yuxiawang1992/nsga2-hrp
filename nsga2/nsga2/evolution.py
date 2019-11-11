@@ -28,21 +28,23 @@ class Evolution(object):
         children = self.utils.create_children(self.population,1)
         returned_population = None 
         print("-----------create the initial children----------- "+ time.strftime("%H:%M:%S"))
-        for i in range(self.num_of_generations):
+        for i in xrange(self.num_of_generations):
             self.population.extend(children)
             self.utils.fast_nondominated_sort(self.population)
             print("-----------fast nondominated sort-----------  "+ time.strftime("%H:%M:%S"))
             new_population = Population()
             front_num = 0
+            ## according to the sum(10), add individuals, front 0 come first, then the second front
             while len(new_population) + len(self.population.fronts[front_num]) <= self.num_of_individuals:
                 self.utils.calculate_crowding_distance(self.population.fronts[front_num])
                 new_population.extend(self.population.fronts[front_num])
-                front_num += 1
+                front_num += 1    
                 
             sorted(self.population.fronts[front_num], cmp=self.utils.crowding_operator)
             new_population.extend(self.population.fronts[front_num][0:self.num_of_individuals-len(new_population)])
             returned_population = self.population
             self.population = new_population
+            
             print("-------------created the new children------------  "+ time.strftime("%H:%M:%S"))
             children = self.utils.create_children(self.population,i)
             print("-------------finished the new children------------  "+ time.strftime("%H:%M:%S"))

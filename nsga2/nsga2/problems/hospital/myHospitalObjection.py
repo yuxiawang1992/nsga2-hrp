@@ -4,8 +4,6 @@ Created on Tue Jul 26 19:55:43 2016
 计算目标函数的第二种方法，在计算经过的格网时采用了缓存的方法~~
 @author: dell
 """
-
-import time
 import psycopg2
 import copy
 import pandas as pd
@@ -14,12 +12,11 @@ import numpy as np
 #获得数组中高于均值三倍标准差的离群点的个数
 def getOutliersNum(density_array):
     outliers = 0
-    N = len(density_array)
     narray = np.array(density_array)
     mean = narray.mean()
     stdev = narray.std()
       
-    for i in range(N):
+    for i in xrange(len(density_array)):
         if (density_array[i]-mean) > stdev * 9:
             outliers += 1
             
@@ -40,7 +37,7 @@ def objFunction(individual):
     #hos_can_id_arr 存储获得候选医院的属性,已换成五环之外的数据点0731
     hos_can_id_arr = []
     lines = open("e:\\0000\\hos_can_beyond5ring.txt",'r').readlines()
-    for i in range(1,len(lines)):
+    for i in xrange(1,len(lines)):
         hos_can_id_arr.append(int(lines[i].strip().split(',')[2]))
     
     #grid_density hos_opt 存储最终需要统计优化的量及优化的医院
@@ -51,11 +48,11 @@ def objFunction(individual):
     lines = open("E:\\0000\\whereTaxiCoverResearch.txt",'r').readlines()
     where_taxi_cover_matrix = [[] for row in range(8748)]
     hos_index = []
-    for i in range(1,len(lines[0].strip('\n').split(','))):
+    for i in xrange(1,len(lines[0].strip('\n').split(','))):
         hos_index.append(int(lines[0].strip('\n').split(',')[i]))
-    for i in range(1,len(lines)):
+    for i in xrange(1,len(lines)):
         data = lines[i].strip('\n').split(',')
-        for j in range(1,len(data)):
+        for j in xrange(1,len(data)):
             where_taxi_cover_matrix[int(data[0])].append(int(data[j]))
     
     '''
@@ -66,16 +63,16 @@ def objFunction(individual):
     需要叠加多家医院的新情形
     '''        
     #对象拷贝，深拷贝
-    temp_where_taxi_from_matrix = copy.deepcopy(where_taxi_cover_matrix)        
+    temp_where_taxi_from_matrix = copy.copy(where_taxi_cover_matrix)        
     #获得P家医院搬迁之后的病人分布        
-    for order in range(P):
+    for order in xrange(P):
         #寻找到ID为医院ID的数据在第几列
-        for i in range(len(hos_index)):
+        for i in xrange(len(hos_index)):
             if(hos_index[i] == hos_opt_id_arr[order]):
                 opt_idx = i
                 break
         #
-        for j in range(len(temp_where_taxi_from_matrix)):
+        for j in xrange(len(temp_where_taxi_from_matrix)):
             if(temp_where_taxi_from_matrix[j][opt_idx]) !=0:
                 
                 #分析待优化医院搬迁之后【未带走】的病源的新分布（频率最高原则）
@@ -88,7 +85,7 @@ def objFunction(individual):
                     
                 #如果次数最高的医院不是需要优化的医院本身
                 if first_hos_id != None and first_hos_id != hos_opt_id_arr[order]:
-                    for k in range(len(hos_index)):
+                    for k in xrange(len(hos_index)):
                         if hos_index[k] ==  first_hos_id:
                             first_hos_idx = k
                             break
@@ -97,7 +94,7 @@ def objFunction(individual):
                     
                 elif second_hos_id != None and first_hos_id == hos_opt_id_arr[order] \
                 and  second_hos_id != hos_opt_id_arr[order]:
-                    for k in range(len(hos_index)):
+                    for k in xrange(len(hos_index)):
                         if hos_index[k] == second_hos_id:
                             sec_hos_idx = k
                             break
@@ -105,7 +102,7 @@ def objFunction(individual):
                     int(0.3*temp_where_taxi_from_matrix[j][opt_idx])
                 elif third_hos_id != None and  first_hos_id == hos_opt_id_arr[order] \
                 and second_hos_id == hos_opt_id_arr[order] and third_hos_id !=hos_opt_id_arr[order]:
-                    for k in range(len(hos_index)):
+                    for k in xrange(len(hos_index)):
                         if hos_index[k] == third_hos_id:
                             third_hos_idx = k
                             break
@@ -118,14 +115,14 @@ def objFunction(individual):
                         nearest_hos_id = record[0]
                         sec_nearest_hos_id = record[1]
                     if nearest_hos_id != None and nearest_hos_id != hos_opt_id_arr[order]:
-                        for k in range(len(hos_index)):
+                        for k in xrange(len(hos_index)):
                             if hos_index[k] == nearest_hos_id:
                                 nearest_hos_idx = k
                                 break
                         temp_where_taxi_from_matrix[j][nearest_hos_idx] += \
                         int(0.3*temp_where_taxi_from_matrix[j][opt_idx])
                     elif sec_nearest_hos_id != None and sec_nearest_hos_id != hos_opt_id_arr[order]:
-                        for k in range(len(hos_index)):
+                        for k in xrange(len(hos_index)):
                             if hos_index[k] == sec_nearest_hos_id:
                                 sec_nearest_hos_idx = k
                                 break
@@ -133,7 +130,7 @@ def objFunction(individual):
                         int(0.3*temp_where_taxi_from_matrix[j][opt_idx])
                 
                 #分析待优化医院搬迁之后【带走的】病源给新医院增加的病人分布
-                for k in range(len(hos_index)):
+                for k in xrange(len(hos_index)):
                     if hos_index[k] == hos_can_id_arr[int(chrom[order])]:
                         can_idx = k
                         break
@@ -151,8 +148,8 @@ def objFunction(individual):
     输出数据为 grid_density，统计新的分布下的路网压力
     需要单独计算每一家医院带来的交通量的总和然后再累加
     '''
-    for m in range(len(temp_where_taxi_from_matrix)):
-        for n in range(len(temp_where_taxi_from_matrix[0])):
+    for m in xrange(len(temp_where_taxi_from_matrix)):
+        for n in xrange(len(temp_where_taxi_from_matrix[0])):
             grid_to_hos_num = temp_where_taxi_from_matrix[m][n]
             if grid_to_hos_num != 0:
                 selectSql = "SELECT line_cross FROM grid_to_hos_cache_table_new WHERE \
@@ -196,5 +193,3 @@ def objFunction(individual):
 
                   
                 
-                
-        

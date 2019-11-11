@@ -7,7 +7,7 @@ from nsga2.evolution import Evolution
 import numpy as np
 import time
 
-# upload file to github on 20191111
+import profile 
 
 def print_generation(vardim,iteration,population, generation_num):
     print("Iteration:{},Generation: {}".format(iteration,generation_num))
@@ -28,10 +28,10 @@ def collect_metrics(vardim,iteration,population, generation_num):
     hvr = metrics.HVR(pareto_front)
     collected_metrics[generation_num] = hv, hvr
 
-#print("----------started----------  "+ time.strftime("%H:%M:%S"))
+
 iteration = 20
-for i in range(0,iteration):
-    vardim  = 5
+for i in xrange(6,iteration):
+    vardim  = 15
     print("----------started----------  "+str(vardim)+ '----'+time.strftime("%H:%M:%S"))
     num_of_generations = 50
     num_of_individuals = 10
@@ -63,11 +63,13 @@ for i in range(0,iteration):
     
     plotter.plot_x_y(collected_metrics.keys(), map(lambda(hv, hvr): hvr, collected_metrics.values()), 
     'generation', 'HVR', 'HVR metric for Hospital relocation problem', str(vardim)+'-'+str(i)+'-'+'HVR')
-    fout = open("D:\\PythonCode\\NSGA2\\nsga2-2.0\\txt\\"+str(vardim)+'-'+str(i)+'-'+'metrics.txt','w')
+    fout = open("D:\\PythonCode\\NSGA-II\\txt\\"+str(vardim)+'-'+str(i)+'-'+'metrics.txt','w')
     fout.write('generation,HV,HVR'+'\n')
-    for order in range(len(collected_metrics)):
+    for order in xrange(len(collected_metrics)):
         fout.write(str(order)+','+str(collected_metrics[order][0])+','+str(collected_metrics[order][1])+'\n')
     fout.close()
-    
+ 
+
+       
 print("----------finished----------  "+ time.strftime("%H:%M:%S"))
         

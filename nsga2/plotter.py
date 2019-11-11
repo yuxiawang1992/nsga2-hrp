@@ -13,15 +13,15 @@ class Plotter():
         computed_pareto_front = population.fronts[0]
         self.__plot_front(computed_pareto_front, filename)
         #------below it is to write out each generation's best front number-----
-        f1 = open("D:\\PythonCode\\NSGA2\\nsga2-2.0\\txt\\"+str(vardim)+'-'+str(iteration)+'-'+str(generation_number)+'-'+'pareto_front.txt','w')
+        f1 = open("D:\\PythonCode\\NSGA-II\\txt\\"+str(vardim)+'-'+str(iteration)+'-'+str(generation_number)+'-'+'pareto_front.txt','w')
         f1.write("num,avedis_ratio,outliers_ratio,obj1,obj2,rank,crowding_dis"+'\n')
         
-        for i in range(len(population.fronts[0])):
+        for i in xrange(len(population.fronts[0])):
             f1.write(str(i)+','+str(population.fronts[0][i].avedis_ratio)+','+str(population.fronts[0][i].outliers_ratio)+','+\
             str(population.fronts[0][i].objectives[0])+','+str(population.fronts[0][i].objectives[1])+','+str(population.fronts[0][i].rank)+','+\
             str(population.fronts[0][i].crowding_distance))
             
-            for j in range(len(population.fronts[0][i].hos_opt)):
+            for j in xrange(len(population.fronts[0][i].hos_opt)):
                 f1.write(','+str(population.fronts[0][i].hos_opt[j]))
                 
             for j in range(len(population.fronts[0][i].features)):
@@ -31,15 +31,15 @@ class Plotter():
             
         f1.close()
         
-        f2 = open("D:\\PythonCode\\NSGA2\\nsga2-2.0\\txt\\"+str(vardim)+'-'+str(iteration)+'-'+str(generation_number)+'-'+'grid_dens.txt','w')
+        f2 = open("D:\\PythonCode\\NSGA-II\\txt\\"+str(vardim)+'-'+str(iteration)+'-'+str(generation_number)+'-'+'grid_dens.txt','w')
         f2.write("grid_id")
-        for i in range(len(population.fronts[0])):
+        for i in xrange(len(population.fronts[0])):
             f2.write(','+'dens_'+str(i))
         f2.write('\n')
         
-        for j in range(len(population.fronts[0][0].grid_dens)):
+        for j in xrange(len(population.fronts[0][0].grid_dens)):
             f2.write(str(j))
-            for i in range(len(population.fronts[0])):
+            for i in xrange(len(population.fronts[0])):
                 f2.write(','+str(population.fronts[0][i].grid_dens[j]))
             f2.write('\n')
                 

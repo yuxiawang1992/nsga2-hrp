@@ -59,7 +59,7 @@ class Hospital(Problem):
         individual.objectives = []
         individual.objectives.append(self.hos_definitions.f1(individual))
         individual.objectives.append(self.hos_definitions.f2(individual))
-        for i in range(2):
+        for i in xrange(2):
             if self.min_objectives[i] is None or individual.objectives[i] < self.min_objectives[i]:
                 self.min_objectives[i] = individual.objectives[i]
             if self.max_objectives[i] is None or individual.objectives[i] > self.max_objectives[i]:
