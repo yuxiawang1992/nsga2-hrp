@@ -19,7 +19,7 @@ Python Version: 2.7
 ## Example
 Methodology
 
-![Methodology](/results/Methodology.png "Methodology")
+![Methodology](/results/Methodology.png width = 200 "Methodology")
 
 <br>
 
