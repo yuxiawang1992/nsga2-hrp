@@ -19,7 +19,7 @@ Python Version: 2.7
 ## Example
 Methodology
 
-![]["/results/Methodology.png"  width="300" ]
+![][/results/Methodology.png width="300" ]
 
 <img src= "/results/Methodology.png" width="300" >
 
