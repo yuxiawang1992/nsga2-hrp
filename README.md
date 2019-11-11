@@ -18,6 +18,7 @@ Python Version: 2.7
 
 ## Example
 Methodology
+<img src= "/results/Methodology.png" width="300" >
 
 ![Methodology](/results/Methodology.png "Methodology")
 
