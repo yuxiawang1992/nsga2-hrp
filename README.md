@@ -18,13 +18,14 @@ Python Version: 2.7
 
 ## Example
 Methodology
-<img src= "/results/Methodology.png" width="300" >
 
-![Methodology](/results/Methodology.png "Methodology")
+<img src= "/results/Methodology.png" width="300" >
 
 Hospital Service Area and Relocation Strategy
 
-![Hospital Service Area](/results/Hospital Service Area-PEK.jpg "Hospital Service Area")![Relocation Strategy](/results/relocation_strategy.jpg "Relocation Strategy")
+<img src= "/results/Hospital Service Area-PEK.jpg" width="300" >
+<img src= "/results/relocation_strategy.jpg" width="300" >
+
 
 
 
