@@ -20,8 +20,8 @@ Python Version: 2.7
 Methodology and NSGA2 flow charts
 
 <table><tr>
-<td><img src= "/results/Methodology.png" width=300 border=10></td>
-<td><img src= "/results/NSGA2.png" width=300 border=10></td>
+<td><img src= "/results/Methodology.png" width=300 ></td>
+<td><img src= "/results/NSGA2.png" width=300 ></td>
 </tr></table>
 
 Hospital Service Area and Relocation Strategy
