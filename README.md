@@ -17,21 +17,19 @@ Analysis results provide a tradeoff between traffic congestion relief and hospit
 Python Version: 2.7
 
 ## Example
-Methodology
-
-![][/results/Methodology.png width="300" ]
+Methodology and NSGA2 flow charts
 
 <table><tr>
-<td><img src= "/results/Methodology.png" border=0></td>
-<td><img src= "/results/NSGA2.png" border=0></td>
+<td><img src= "/results/Methodology.png" width=300 border=10></td>
+<td><img src= "/results/NSGA2.png" width=300 border=10></td>
 </tr></table>
 
 <img src= "/results/Methodology.png" width="300" >
 
 Hospital Service Area and Relocation Strategy
-
-<img src= "/results/Hospital Service Area-PEK.jpg" width="300" >
-<img src= "/results/relocation_strategy.jpg" width="300" >
+<table><tr>
+<td><img src= "/results/Hospital Service Area-PEK.jpg" width="300" > <td>
+<td><img src= "/results/relocation_strategy.jpg" width="300" > <td>
 
 
 
