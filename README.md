@@ -24,9 +24,8 @@ Methodology and NSGA2 flow charts
 <td><img src= "/results/NSGA2.png" width=300 border=10></td>
 </tr></table>
 
-<img src= "/results/Methodology.png" width="300" >
-
 Hospital Service Area and Relocation Strategy
+
 <table><tr>
 <td><img src= "/results/Hospital Service Area-PEK.jpg" width="300" > <td>
 <td><img src= "/results/relocation_strategy.jpg" width="300" > <td>
