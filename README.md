@@ -1,6 +1,10 @@
 # NSGA-II for hospital relocation problem
 Implementation of Non‐dominated Sorting Genetic Algorithm II(NSGA-II) for solving hospital relocation problem (HPR). The code is based on https://github.com/wreszelewski/nsga2
 
+## Reference 
+[Optimizing the spatial relocation of hospitals to reduce urban traffic congestion: A case study of Beijing.](https://doi.org/10.1111/tgis.12524) <br>
+Wang Yuxia, Tong Daoqin, Li Weimin, Liu Yu, 2019. Transactions in GIS, 23(2):365–386.
+
 ## Description
 ### Motivation
 Traffic congestion represents an ongoing serious issue in many large cities. Many public facilities, such as hospitals, tend to be centrally located to ensure they are most accessible to local residents; as a result, they may contribute significantly to a city's traffic congestion. In this study, a multi‐objective spatial optimization model was provided to help formulate hospital relocation plans, taking into account both traffic congestion and hospital accessibility. 
@@ -12,8 +16,8 @@ Analysis results provide a tradeoff between traffic congestion relief and hospit
 ## Environment
 Python Version: 2.7
 
-## Reference 
-[Optimizing the spatial relocation of hospitals to reduce urban traffic congestion: A case study of Beijing.](https://doi.org/10.1111/tgis.12524) <br>
-Wang Yuxia, Tong Daoqin, Li Weimin, Liu Yu, 2019. Transactions in GIS, 23(2):365–386.
+## Example
+
+
 
 
