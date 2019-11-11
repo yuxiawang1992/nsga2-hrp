@@ -12,7 +12,7 @@ Analysis results provide a tradeoff between traffic congestion relief and hospit
 ## Environment
 Python Version: 2.7
 
-# Reference 
+## Reference 
 [Optimizing the spatial relocation of hospitals to reduce urban traffic congestion: A case study of Beijing.](https://doi.org/10.1111/tgis.12524) <br>
 Wang Yuxia, Tong Daoqin, Li Weimin, Liu Yu, 2019. Transactions in GIS, 23(2):365–386.
 
