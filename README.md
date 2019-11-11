@@ -21,6 +21,11 @@ Methodology
 
 ![][/results/Methodology.png width="300" ]
 
+<table><tr>
+<td><img src= "/results/Methodology.png" border=0></td>
+<td><img src= "/results/NSGA2.png" border=0></td>
+</tr></table>
+
 <img src= "/results/Methodology.png" width="300" >
 
 Hospital Service Area and Relocation Strategy
