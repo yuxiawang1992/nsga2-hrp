@@ -18,12 +18,19 @@ Python Version: 2.7
 
 ## Example
 Methodology
+
 ![Methodology](https://github.com/yuxiawang1992/nsga2-hrp/results/Methodology.png "Methodology")
+
 <br>
+
 Hospital Service Area
+
 ![Hospital Service Area](https://github.com/yuxiawang1992/nsga2-hrp/results/Hospital Service Area-PEK.jpg "Hospital Service Area")
+
 <br>
+
 Relocation Strategy
+
 ![Relocation Strategy](https://github.com/yuxiawang1992/nsga2-hrp/results/relocation_strategy.jpg "Relocation Strategy")
 
 
